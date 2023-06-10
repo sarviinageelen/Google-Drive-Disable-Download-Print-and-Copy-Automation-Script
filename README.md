@@ -17,7 +17,7 @@ To use this script, you need to enable the Google Drive API in your Google Apps 
 
 ### Script
 
-Here is the script:
+Here is the script for all folders, sub-folders & files:
 
 ```javascript
 function disableDownloadPrintCopyForAll() {
@@ -51,8 +51,58 @@ function traverseAndUpdateFiles(folder) {
     traverseAndUpdateFiles(subfolder);
   }
 }
-
 ```
+
+Here is the script for a specific folder at a root level asuming the folder is named 'Project':
+
+```javascript
+function disableDownloadPrintCopyForFolder() {
+  // Find the 'Projects' folder at the root level of Google Drive
+  var folders = DriveApp.getRootFolder().getFolders();
+  var targetFolder = null;
+
+  while (folders.hasNext()) {
+    var folder = folders.next();
+
+    if (folder.getName() === 'Projects') {
+      targetFolder = folder;
+      break;
+    }
+  }
+
+  // If the 'Projects' folder was found, change the settings for all files within it and its sub-folders
+  if (targetFolder != null) {
+    traverseAndUpdateFiles(targetFolder);
+  } else {
+    Logger.log("The 'Projects' folder was not found at the root level of your Google Drive.");
+  }
+}
+
+function traverseAndUpdateFiles(folder) {
+  var files = folder.getFiles();
+
+  while (files.hasNext()) {
+    var file = files.next();
+    var fileId = file.getId();
+
+    // Change the file's settings so that viewers and commenters can't download, print, or copy
+    var resource = {
+      'copyRequiresWriterPermission': true
+    };
+
+    Drive.Files.update(resource, fileId);
+  }
+
+  // Recursively call this function for each sub-folder
+  var subfolders = folder.getFolders();
+  
+  while (subfolders.hasNext()) {
+    var subfolder = subfolders.next();
+    traverseAndUpdateFiles(subfolder);
+  }
+}
+```
+
 
 ### Usage
 You can run this script in the Apps Script editor.
