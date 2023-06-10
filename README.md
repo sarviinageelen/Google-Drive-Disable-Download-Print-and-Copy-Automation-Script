@@ -15,7 +15,7 @@ To use this script, you need to enable the Google Drive API in your Google Apps 
 3. At the left, next to Services, click Add a service add.
 4. Select an 'Drive API' and click Add.
 
-### Script
+### Script(s)
 
 Here is the script for all folders, sub-folders & files:
 
@@ -52,6 +52,7 @@ function traverseAndUpdateFiles(folder) {
   }
 }
 ```
+
 
 Here is the script for a specific folder at a root level asuming the folder is named 'Project':
 
