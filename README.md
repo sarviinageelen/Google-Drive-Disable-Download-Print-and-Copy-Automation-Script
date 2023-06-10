@@ -20,7 +20,6 @@ To use this script, you need to enable the Google Drive API in your Google Apps 
 Here is the script:
 
 ```javascript
-Copy code
 function disableDownloadPrintCopyForAll() {
   // Start from the root folder of Google Drive
   var rootFolder = DriveApp.getRootFolder();
