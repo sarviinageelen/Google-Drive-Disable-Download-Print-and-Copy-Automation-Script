@@ -1,23 +1,22 @@
-# Google Drive Disable Downloading
+# Google Drive: Disable Download, Print, and Copy
 
-This Google Apps Script is designed to update all files in your Google Drive to disable the options to download, print, or copy for viewers and commenters.
+This repository contains Google Apps Script(s) that help manage access permissions across files in your Google Drive. Specifically, these scripts remove the options for viewers and commenters to download, print, or copy the files.
 
-## Getting Started
+## Setup and Prerequisites
 
-These instructions will help you set up this script for use in your Google Drive.
-
-### Prerequisites
-
-To use this script, you need to enable the Google Drive API in your Google Apps Script project:
+Before running these scripts, ensure you have enabled the Google Drive API for your Apps Script project. Here are the steps to enable it:
 
 1. Open the Apps Script project.
-2. At the left, click Editor code.
-3. At the left, next to Services, click Add a service add.
-4. Select an 'Drive API' and click Add.
+2. On the left, click on 'Editor code'.
+3. Next to 'Services', click on 'Add a service'.
+4. From the list, select 'Drive API' and click on 'Add'.
 
-### Script(s)
+## Scripts
 
-Here is the script for all folders, sub-folders & files:
+This repository provides two scripts:
+
+### 1. Apply Permission Changes to All Files
+This script applies the permission changes to all files in your Google Drive, traversing all folders and sub-folders.
 
 ```javascript
 function disableDownloadPrintCopyForAll() {
@@ -54,7 +53,9 @@ function traverseAndUpdateFiles(folder) {
 ```
 
 
-Here is the script for a specific folder at a root level asuming the folder is named 'Project':
+### 2. Apply Permission Changes to a Specific Root-Level Folder
+This script applies the permission changes to a specific folder at the root level of your Google Drive and its sub-folders. In this example, we assume the folder is named 'Projects'.
+
 
 ```javascript
 function disableDownloadPrintCopyForFolder() {
