@@ -1,4 +1,4 @@
-# Google Drive: Disable Download, Print, and Copy
+# Google Drive: Disable Download, Print, and Copy Automation Script
 
 This repository contains Google Apps Script(s) that help manage access permissions across files in your Google Drive. Specifically, these scripts remove the options for viewers and commenters to download, print, or copy the files.
 
